@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is money ?</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* ROOT */
+:root{
+  --green:#1f4f3a;
+  --text:#222;
+  --muted:#666;
+  --border:#e5e5e5;
+  --bg-sidebar: #f9f9f9;
+}
+
+/* BODY */
+body{
+  font-family:"Playfair Display", serif;
+  color:var(--text);
+  background:#ffffff;
+}
+
+/* HEADER */
+/* BOOK HEADER – matches reference image */
+.book-header{
+  width: 100%;
+  background: #0b5a3a; /* deep academic green */
+  padding: 26px 48px;
+}
+
+.book-header h1{
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+
+/* MAIN LAYOUT */
+.wrapper{
+  display:grid;
+  grid-template-columns:350px 1fr; /* Fixed width sidebar, flexible content */
+  min-height:calc(100vh - 70px);
+}
+
+/* SIDEBAR */
+.sidebar{
+  padding:30px 30px;
+  border-right:1px solid var(--border);
+  background: var(--bg-sidebar);
+  /* Make sidebar sticky and scrollable for long content */
+  height: calc(100vh - 70px);
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar for Sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+.sidebar h3{
+  font-family:"Playfair Display", serif;
+  font-size:16px;
+  margin:24px 0 8px;
+  color:var(--green);
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+}
+.sidebar h3:first-child {
+  margin-top: 0;
+}
+
+.sidebar p {
+    font-size: 13px;
+    color: #858d83;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.sidebar ol{
+  padding-left:20px;
+  margin-bottom: 10px;
+}
+
+.sidebar li{
+  font-size:14px;
+  line-height:1.5;
+  margin-bottom:6px;
+  color: #444;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.sidebar li:hover {
+  color: var(--green);
+  font-weight: 500;
+}
+
+/* Link styling within sidebar to reset defaults */
+.sidebar li a {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+
+/* CONTENT */
+.content{
+  padding:40px 60px;
+  max-width: 900px; /* Readability constraint */
+}
+
+/* BREADCRUMB */
+.breadcrumb{
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+
+.breadcrumb span{
+  color:var(--green);
+  font-weight:500;
+}
+
+/* CHAPTER HEADER */
+.chapter{
+  text-align:center;
+  margin-bottom:40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.chapter h1{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--green);
+  text-align: center;
+  position: relative;
+}
+
+/* horizontal line before Chapter 01 */
+
+
+
+
+.chapter h2{
+  font-family:"Playfair Display", serif;
+  font-size:20px;
+  font-weight:400;
+  margin-top:10px;
+  color: var(--text);
+}
+
+/* TEXT */
+.content p{
+  font-size:16px;
+  line-height:1.8;
+  margin-bottom:20px;
+  color: #333;
+}
+
+.content h3{
+  font-family:"Playfair Display", serif;
+  font-size:22px;
+  margin:40px 0 15px;
+  color: var(--green);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+/* New H4 styling for sub-sub sections */
+.content h4{
+  font-family:"Playfair Display", serif;
+  font-size:18px;
+  margin:25px 0 10px;
+  color: #222;
+  font-weight: 700;
+}
+
+.content ul{
+  padding-left:20px;
+  margin:15px 0;
+}
+
+.content li{
+  font-size:15px;
+  line-height:1.7;
+  margin-bottom:8px;
+}
+
+.sub{
+  margin-left:20px;
+  margin-top: 5px;
+  list-style-type: circle;
+  color: var(--muted);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .wrapper{
+    grid-template-columns:1fr;
+  }
+  .sidebar{
+    border-right:none;
+    border-bottom:1px solid var(--border);
+    height: auto;
+    position: relative;
+    overflow-y: visible;
+  }
+  .content{
+    padding: 30px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="book-header">
+  <h1>Content of the book</h1>
+</header>
+
+
+<div class="wrapper">
+
+  <aside class="sidebar">
+
+    <h3>Section 1: Foundations of Finance and Accounting</h3>
+    <p>This section builds from zero knowledge, explaining "what" before "why" or "how."</p>
+    <ol>
+      <li>
+        <a href="what_is_money.html" style="color: var(--green);    font-weight: 500;">What is Money? (History, Forms, and Functions)</a>
+      </li>
+      <li><a href="understanding_value_and_exchange.html">Understanding Value and Exchange</a></li>
+      <li><a href="introduction_to_assets_and_liabilities.html">Introduction to Assets and Liabilities</a></li>
+      <li>The Role of Accounting in Business</li>
+      <li>Double-Entry Bookkeeping Basics</li>
+      <li>Debits and Credits: The Core Mechanism</li>
+      <li>What is a Transaction?</li>
+      <li>Basic Financial Decisions: Save vs. Spend</li>
+      <li>Time Value of Money: Present vs. Future Value</li>
+      <li>Inflation and Its Impact on Finances</li>
+    </ol>
+
+    <h3>Section 2: Accounting Principles and Standards</h3>
+    <p>Covers the rules that govern financial records.</p>
+    <ol>
+      <li>GAAP Overview</li>
+      <li>IFRS Basics</li>
+      <li>Accrual vs. Cash Basis Accounting</li>
+      <li>The Accounting Equation: Assets = Liabilities + Equity</li>
+      <li>Revenue Recognition Principles</li>
+      <li>Matching Principle and Expenses</li>
+      <li>Conservatism and Materiality in Accounting</li>
+      <li>Going Concern Assumption</li>
+      <li>Fair Value vs. Historical Cost</li>
+    </ol>
+
+    <h3>Section 3: Bookkeeping and Record-Keeping</h3>
+    <p>Practical how-tos for daily tracking.</p>
+    <ol>
+      <li>Setting Up a Chart of Accounts</li>
+      <li>Recording Journal Entries</li>
+      <li>Posting to the General Ledger</li>
+      <li>Trial Balance Preparation</li>
+      <li>Adjusting Entries: Prepaids and Accruals</li>
+      <li>Closing Entries and Temporary Accounts</li>
+      <li>Bank Reconciliations</li>
+      <li>Payroll Bookkeeping Basics</li>
+    </ol>
+
+    <h3>Section 4: Financial Statements</h3>
+    <p>Deep dive into the "big three" reports.</p>
+    <ol>
+      <li>The Balance Sheet: Snapshot of Position</li>
+      <li>Income Statement: Profit and Loss Explained</li>
+      <li>Cash Flow Statement: Sources and Uses</li>
+      <li>Statement of Changes in Equity</li>
+      <li>Notes to Financial Statements</li>
+      <li>Preparing a Simple Balance Sheet</li>
+      <li>Analyzing Income Statement Line Items</li>
+      <li>Cash Flow from Operating Activities</li>
+      <li>Indirect vs. Direct Method for Cash Flows</li>
+      <li>Common-Size Financial Statements</li>
+    </ol>
+
+    <h3>Section 5: Managerial and Cost Accounting</h3>
+    <p>Internal tools for decision-making.</p>
+    <ol>
+      <li>Role of Managerial Accounting</li>
+      <li>Cost Behavior: Fixed, Variable, and Mixed</li>
+      <li>Break-Even Analysis</li>
+      <li>Contribution Margin and Margin of Safety</li>
+      <li>Job Order Costing</li>
+      <li>Process Costing</li>
+      <li>Activity-Based Costing (ABC)</li>
+      <li>Budgeting: Master Budget Overview</li>
+      <li>Flexible Budgets vs. Static Budgets</li>
+      <li>Variance Analysis: Material and Labor</li>
+      <li>Standard Costing Systems</li>
+      <li>Relevant Costs for Decision-Making</li>
+    </ol>
+
+    <h3>Section 6: Financial Analysis and Ratios</h3>
+    <p>How to interpret numbers for insights.</p>
+    <ol>
+      <li>Liquidity Ratios: Current and Quick</li>
+      <li>Solvency Ratios: Debt-to-Equity</li>
+      <li>Profitability Ratios: ROA and ROE</li>
+      <li>Efficiency Ratios: Inventory Turnover</li>
+      <li>DuPont Analysis</li>
+      <li>Trend Analysis and Horizontal Review</li>
+      <li>Vertical Analysis and Common Sizing</li>
+      <li>Benchmarking Against Industry Averages</li>
+      <li>Limitations of Ratio Analysis</li>
+    </ol>
+
+    <h3>Section 7: Corporate Finance</h3>
+    <p>Funding and growth strategies for businesses.</p>
+    <ol>
+      <li>Capital Structure: Debt vs. Equity</li>
+      <li>Cost of Capital: WACC Calculation</li>
+      <li>Dividend Policy and Theories</li>
+      <li>Stock Repurchases and Signaling</li>
+      <li>Mergers and Acquisitions Basics</li>
+      <li>Valuation Methods: DCF Overview</li>
+      <li>Capital Budgeting: NPV and IRR</li>
+      <li>Payback Period and Profitability Index</li>
+      <li>Lease vs. Buy Decisions</li>
+      <li>Working Capital Management</li>
+    </ol>
+
+    <h3>Section 8: Investments and Securities</h3>
+    <p>From stocks to advanced instruments.</p>
+    <ol>
+      <li>What is a Stock? (Equity Ownership)</li>
+      <li>Bonds: Debt Securities Explained</li>
+      <li>Mutual Funds: Pooled Investments</li>
+      <li>Exchange-Traded Funds (ETFs)</li>
+      <li>What is a Derivative? (Futures, Options, Swaps)</li>
+      <li>Options Trading Basics: Calls and Puts</li>
+      <li>Futures Contracts and Hedging</li>
+      <li>Swaps: Interest Rate and Currency</li>
+      <li>Initial Public Offerings (IPOs)</li>
+      <li>Secondary Markets and Stock Exchanges</li>
+      <li>Portfolio Diversification Principles</li>
+      <li>Efficient Market Hypothesis</li>
+    </ol>
+
+    <h3>Section 9: Risk Management and Derivatives</h3>
+    <p>Protecting against uncertainties.</p>
+    <ol>
+      <li>Types of Financial Risk: Market, Credit, Operational</li>
+      <li>Value at Risk (VaR) Basics</li>
+      <li>Hedging Strategies with Derivatives</li>
+      <li>Credit Default Swaps (CDS)</li>
+      <li>Insurance in Finance</li>
+      <li>Stress Testing and Scenario Analysis</li>
+      <li>Beta and Systematic Risk</li>
+      <li>Risk-Adjusted Returns: Sharpe Ratio</li>
+    </ol>
+
+    <h3>Section 10: Taxation and Regulatory Compliance</h3>
+    <p>Navigating taxes and laws.</p>
+    <ol>
+      <li>What is Taxable Income?</li>
+      <li>Corporate Tax Rates and Deductions</li>
+      <li>Personal Income Tax Brackets</li>
+      <li>Sales Tax and VAT</li>
+      <li>Transfer Pricing in Multinationals</li>
+      <li>Tax Credits vs. Deductions</li>
+      <li>Deferred Tax Assets and Liabilities</li>
+      <li>International Tax Treaties</li>
+      <li>Anti-Money Laundering (AML) Basics</li>
+    </ol>
+
+    <h3>Section 11: Auditing and Assurance</h3>
+    <p>Ensuring accuracy and trust.</p>
+    <ol>
+      <li>Internal vs. External Auditing</li>
+      <li>Audit Planning and Risk Assessment</li>
+      <li>Substantive Testing Procedures</li>
+      <li>Audit Opinions and Qualifications</li>
+      <li>Fraud Detection in Audits</li>
+      <li>SOX Compliance Overview</li>
+      <li>Forensic Accounting Basics</li>
+    </ol>
+
+    <h3>Section 12: Advanced and Specialized Topics</h3>
+    <p>Emerging and niche areas.</p>
+    <ol>
+      <li>International Finance: Forex Markets</li>
+      <li>Behavioral Finance: Biases and Irrationality</li>
+      <li>Sustainable Finance and ESG Investing</li>
+      <li>FinTech: Blockchain and Crypto Basics</li>
+      <li>Personal Finance: Budgeting from Scratch</li>
+      <li>Retirement Planning: 401(k) and IRAs</li>
+      <li>Estate Planning and Wealth Transfer</li>
+      <li>Ethics in Finance: Conflicts of Interest</li>
+    </ol>
+
+  </aside>
+
+  <main class="content">
+
+    <div class="breadcrumb">
+      <span>Section 1: Foundations of Finance and Accounting</span> › Chapter 1
+    </div>
+
+    <div class="chapter">
+      <h1>Chapter 01</h1>
+      <h2>What is Money?<br>(History, Forms and Functions)</h2>
+    </div>
+
+    <p>
+      Money is a concept which we all understand but which is difficult to define in exact terms. This is because it fulfills many functions and comes in many forms each of them providing a criterion of moneyness. For this reason, Prof. Walker defines money as ‘‘Money is what money does’’. Since general acceptability is the fundamental characteristic of money, in simple words, money may be defined as anything which is generally acceptable by the people in exchange of goods and services or in repayment of debts.
+    </p>
+
+    <p>
+      One of the traditional definitions of Money calls it “a unit of account, a means of payment and a store of value”. Professor Coulborn defines money as the means of valuation and of payment; as both the unit of account and the generally acceptable medium of exchange.” These are the functional definitions of money because they define money in terms of the functions. Some economists define money in legal terms saying that “anything which the state declares as money is money”.
+    </p>
+
+    <h3>History</h3>
+    <p>
+      We’re always thinking about how to make more money and how to spend it. But we rarely stop to ask: How did money even come into our world? If you’ve never wondered, now’s the time.
+    </p>
+
+    <h4>1. The First Money: Shells and Nature</h4>
+    <ul>
+      <li><b>What:</b> Natural items like Cowrie Shells were used as the earliest form of currency.</li>
+      <li><b>When & Where:</b> The use of cowrie shells can be traced back over 3,000 years, with some of the earliest evidence found in ancient China and South Asia (like India) around the 2nd millennium BCE (Before Common Era).</li>
+      <li><b>Why:</b> They were small, durable, and similar in size, making them a good item for simple trade. Other natural items used were tubular shell beads (wampum by Native Americans) and large carved limestone disks (Yap Island).</li>
+    </ul>
+
+    <h4>2. Coins: The First Standardized Metal Money</h4>
+    <ul>
+      <li><b>What:</b> The first officially regulated, standardized metal coins.</li>
+      <li><b>When & Where:</b> These were created in the Kingdom of Lydia (now part of modern Turkey) in the 7th century BCE.</li>
+      <li><b>Why:</b> They were made from electrum (a natural mix of gold and silver) and carried a royal mark (like a lion), making trade faster, easier, and more reliable than weighing raw metal.</li>
+    </ul>
+
+    <h4>3. Paper Money: A Promise to Pay</h4>
+    <ul>
+      <li><b>What:</b> The earliest form of paper currency, often called "flying money" or promissory notes.</li>
+      <li><b>When & Where:</b> This was first used in China during the Tang Dynasty (around the 7th-10th centuries CE) and later fully developed during the Song Dynasty (starting around 997 CE).</li>
+      <li><b>Why:</b> It was much easier to carry large amounts of money in the form of light paper instead of heavy copper coins, especially for big trade deals.</li>
+    </ul>
+
+    <h4>4. The Gold Standard: Linking Paper to Gold</h4>
+    <ul>
+      <li><b>What:</b> A monetary system where a country promised that its paper money could always be converted into a fixed, specific amount of gold.</li>
+      <li><b>When & Where:</b> The United Kingdom was the first country to formally adopt this system in 1821. Other major countries followed later.</li>
+      <li><b>Why:</b> It was introduced to control the supply of paper money and increase trust, especially for international trade. This system was abandoned by most countries in the 1930s, and completely ended globally by the early 1970s.</li>
+    </ul>
+
+    <h4>5. Modern Digital Money: Plastic and Code</h4>
+    <ul>
+      <li><b>Credit Cards:</b> The first universal cards appeared in 1950 (Diners Club), allowing people to borrow money for purchases.</li>
+      <li><b>Bitcoins (Cryptocurrency):</b> The first major digital currency, created in 2009. It is not controlled by a bank or government; instead, it uses decentralized computer technology (blockchain) to track value.</li>
+    </ul>
+
+    <h3>Forms</h3>
+    <p>
+      Throughout the centuries currency changed not only its value but also its shape, size and even the value.
+    </p>
+
+    <h4>Barter Systems (Pre-History)</h4>
+    <ul>
+      <li><b>Method:</b> Direct exchange of goods or services.</li>
+      <li><b>Limitation:</b> Highly inefficient; required a "double coincidence of wants."</li>
+    </ul>
+
+    <h4>Commodity Money (Ancient Era)</h4>
+    <ul>
+      <li><b>Method:</b> Using items with intrinsic value (salt, shells, grain) as currency.</li>
+      <li><b>Significance:</b> Widely accepted and portable, providing a standardized medium of exchange.</li>
+    </ul>
+
+    <h4>Metal Coins (c. 600 BCE)</h4>
+    <ul>
+      <li><b>Method:</b> Standardized pieces of durable, divisible metal.</li>
+      <li><b>Significance:</b> Greatly accelerated trade due to portability and uniform value.</li>
+    </ul>
+
+    <h4>Paper Money (Tang Dynasty China, 7th-11th Century)</h4>
+    <ul>
+      <li><b>Method:</b> Certificates of value, initially backed by precious metals.</li>
+      <li><b>Evolution:</b> Later transitioned to fiat money, backed only by government guarantee.</li>
+    </ul>
+
+    <h4>Banking Systems (Medieval to Modern Era)</h4>
+    <ul>
+      <li><b>Method:</b> Institutions for lending, deposit-taking, and issuing banknotes.</li>
+      <li><b>Significance:</b> Crucial for managing money flow and developing modern economies.</li>
+    </ul>
+
+    <h4>Modern Plastic Cards (20th Century)</h4>
+    <ul>
+      <li><b>Debit Cards:</b> Link directly to user's available bank funds.</li>
+      <li><b>Credit Cards:</b> Allow users to borrow funds for purchases, offering protection and convenience.</li>
+    </ul>
+
+    <h4>Online Payments (Late 20th - Early 21st Century)</h4>
+    <ul>
+      <li><b>Examples:</b> PayPal, Venmo, and digital wallets.</li>
+      <li><b>Significance:</b> Enabled fast, secure digital transactions over the internet and mobile devices.</li>
+    </ul>
+
+    <h4>Digital Currencies / Cryptocurrencies (2009 - Present)</h4>
+    <ul>
+      <li><b>Examples:</b> Bitcoin and others.</li>
+      <li><b>Technology:</b> Based on decentralized Blockchain technology, operating outside central bank control.</li>
+    </ul>
+
+    <h3>Features</h3>
+    <p>
+      In general money is used to buy goods, services and everything that has value but there is more of it -
+    </p>
+
+    <h4>Primary Functions</h4>
+    <p>
+      These are the two most important and basic roles of money.
+    </p>
+    <p>
+      <b>Money acts as a Medium of Exchange.</b> This simply means money makes trading easy by acting as a go-between, or intermediary. It removes the need for barter, which is swapping goods directly. Barter was inefficient because it required a "double coincidence of wants"—both parties had to want exactly what the other was offering. Money fixes this: you sell for money, and then use the money to buy what you want later. This system allows people to specialize in their jobs, which increases overall efficiency and production.
+    </p>
+    <p>
+      <b>Money also serves as a Unit of Account or Measure of Value.</b> This means money is the common measuring stick that tells us the worth of things; it gives everything a price tag. Without money, it would be difficult to compare the value of different goods (like a car versus an apple). Money solves this by giving everything a single, common unit (dollars, pounds, etc.), which is essential for organized markets and setting prices.
+    </p>
+
+    <h4>Secondary Functions</h4>
+    <p>
+      These roles support financial activity over time and make lending possible.
+    </p>
+    <ul>
+      <li><b>First, money is a store of Value.</b> This means you can save your buying power for the future. You can safely hold your wealth in the form of money because it is the best form of liquid (easily spendable) savings that does not spoil, unlike physical goods.</li>
+      <li><b>Second, money is the Standard of Deferred Payments.</b> This means money is a trusted way to make or pay back debts in the future. Payments that happen later (loans or debts) are called "deferred payments." Money helps here because it generally holds its value well over time. This consistency makes borrowing and lending simple and helps develop the financial system.</li>
+      <li><b>Third, money allows for the Transfer of Value.</b> Since money is universally accepted, you can easily transfer your wealth from one person to another, or from one location to another.</li>
+    </ul>
+
+    <h4>Other Important Roles</h4>
+    <p>
+      Money also helps with high-level decisions and market balance. Consumers look at the money they have saved to make decisions about what they can afford to buy today. Additionally, money helps keep different parts of the financial world balanced and properly connected, such as adjusting the flow of funds between the short-term and long-term funding markets.
+    </p>
+
+  </main>
+
+</div>
+
+</body>
+</html>

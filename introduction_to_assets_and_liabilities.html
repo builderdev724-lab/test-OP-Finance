@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to Assets and Liabilities</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* ROOT */
+:root{
+  --green:#1f4f3a;
+  --text:#222;
+  --muted:#666;
+  --border:#e5e5e5;
+  --bg-sidebar: #f9f9f9;
+}
+
+/* BODY */
+body{
+  font-family:"Playfair Display", serif;
+  color:var(--text);
+  background:#ffffff;
+}
+
+/* HEADER */
+/* BOOK HEADER – matches reference image */
+.book-header{
+  width: 100%;
+  background: #0b5a3a; /* deep academic green */
+  padding: 26px 48px;
+}
+
+.book-header h1{
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+
+/* MAIN LAYOUT */
+.wrapper{
+  display:grid;
+  grid-template-columns:350px 1fr; /* Fixed width sidebar, flexible content */
+  min-height:calc(100vh - 70px);
+}
+
+/* SIDEBAR */
+.sidebar{
+  padding:30px 30px;
+  border-right:1px solid var(--border);
+  background: var(--bg-sidebar);
+  /* Make sidebar sticky and scrollable for long content */
+  height: calc(100vh - 70px);
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar for Sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+.sidebar h3{
+  font-family:"Playfair Display", serif;
+  font-size:16px;
+  margin:24px 0 8px;
+  color:var(--green);
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+}
+.sidebar h3:first-child {
+  margin-top: 0;
+}
+
+.sidebar p {
+    font-size: 13px;
+    color: #858d83;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.sidebar ol{
+  padding-left:20px;
+  margin-bottom: 10px;
+}
+
+.sidebar li{
+  font-size:14px;
+  line-height:1.5;
+  margin-bottom:6px;
+  color: #444;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.sidebar li:hover {
+  color: var(--green);
+  font-weight: 500;
+}
+
+/* Link styling within sidebar to reset defaults */
+.sidebar li a {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+
+/* CONTENT */
+.content{
+  padding:40px 60px;
+  max-width: 900px; /* Readability constraint */
+}
+
+/* BREADCRUMB */
+.breadcrumb{
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+
+.breadcrumb span{
+  color:var(--green);
+  font-weight:500;
+}
+
+/* CHAPTER HEADER */
+.chapter{
+  text-align:center;
+  margin-bottom:40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.chapter h1{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--green);
+  text-align: center;
+  position: relative;
+}
+
+/* horizontal line before Chapter 01 */
+
+
+
+
+.chapter h2{
+  font-family:"Playfair Display", serif;
+  font-size:20px;
+  font-weight:400;
+  margin-top:10px;
+  color: var(--text);
+}
+
+/* TEXT */
+.content p{
+  font-size:16px;
+  line-height:1.8;
+  margin-bottom:20px;
+  color: #333;
+}
+
+.content h3{
+  font-family:"Playfair Display", serif;
+  font-size:22px;
+  margin:40px 0 15px;
+  color: var(--green);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+/* New H4 styling for sub-sub sections */
+.content h4{
+  font-family:"Playfair Display", serif;
+  font-size:18px;
+  margin:25px 0 10px;
+  color: #222;
+  font-weight: 700;
+}
+
+.content ul{
+  padding-left:20px;
+  margin:15px 0;
+}
+
+.content li{
+  font-size:15px;
+  line-height:1.7;
+  margin-bottom:8px;
+}
+
+.sub{
+  margin-left:20px;
+  margin-top: 5px;
+  list-style-type: circle;
+  color: var(--muted);
+}
+
+/* Table styling to match PDF */
+.content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.content table td {
+  border: 1px solid var(--border);
+  padding: 8px;
+}
+
+.content table td:first-child {
+  color: var(--green);
+  font-weight: bold;
+}
+
+/* Formula highlighting */
+.content .formula {
+  border: 1px solid var(--border);
+  padding: 10px;
+  background: var(--bg-sidebar);
+  margin: 20px 0;
+  text-align: center;
+  font-style: italic;
+  color: var(--green);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .wrapper{
+    grid-template-columns:1fr;
+  }
+  .sidebar{
+    border-right:none;
+    border-bottom:1px solid var(--border);
+    height: auto;
+    position: relative;
+    overflow-y: visible;
+  }
+  .content{
+    padding: 30px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="book-header">
+  <h1>Content of the book</h1>
+</header>
+
+
+<div class="wrapper">
+
+  <aside class="sidebar">
+
+    <h3>Section 1: Foundations of Finance and Accounting</h3>
+    <p>This section builds from zero knowledge, explaining "what" before "why" or "how."</p>
+    <ol>
+      <li>
+        <a href="what_is_money.html">What is Money? (History, Forms, and Functions)</a>
+      </li>
+      <li><a href="understanding_value_and_exchange.html">Understanding Value and Exchange</a></li>
+      <li><a href="introduction_to_assets_and_liabilities.html" style="color: var(--green);    font-weight: 500;">Introduction to Assets and Liabilities</a></li>
+      <li>The Role of Accounting in Business</li>
+      <li>Double-Entry Bookkeeping Basics</li>
+      <li>Debits and Credits: The Core Mechanism</li>
+      <li>What is a Transaction?</li>
+      <li>Basic Financial Decisions: Save vs. Spend</li>
+      <li>Time Value of Money: Present vs. Future Value</li>
+      <li>Inflation and Its Impact on Finances</li>
+    </ol>
+
+    <h3>Section 2: Accounting Principles and Standards</h3>
+    <p>Covers the rules that govern financial records.</p>
+    <ol>
+      <li>GAAP Overview</li>
+      <li>IFRS Basics</li>
+      <li>Accrual vs. Cash Basis Accounting</li>
+      <li>The Accounting Equation: Assets = Liabilities + Equity</li>
+      <li>Revenue Recognition Principles</li>
+      <li>Matching Principle and Expenses</li>
+      <li>Conservatism and Materiality in Accounting</li>
+      <li>Going Concern Assumption</li>
+      <li>Fair Value vs. Historical Cost</li>
+    </ol>
+
+    <h3>Section 3: Bookkeeping and Record-Keeping</h3>
+    <p>Practical how-tos for daily tracking.</p>
+    <ol>
+      <li>Setting Up a Chart of Accounts</li>
+      <li>Recording Journal Entries</li>
+      <li>Posting to the General Ledger</li>
+      <li>Trial Balance Preparation</li>
+      <li>Adjusting Entries: Prepaids and Accruals</li>
+      <li>Closing Entries and Temporary Accounts</li>
+      <li>Bank Reconciliations</li>
+      <li>Payroll Bookkeeping Basics</li>
+    </ol>
+
+    <h3>Section 4: Financial Statements</h3>
+    <p>Deep dive into the "big three" reports.</p>
+    <ol>
+      <li>The Balance Sheet: Snapshot of Position</li>
+      <li>Income Statement: Profit and Loss Explained</li>
+      <li>Cash Flow Statement: Sources and Uses</li>
+      <li>Statement of Changes in Equity</li>
+      <li>Notes to Financial Statements</li>
+      <li>Preparing a Simple Balance Sheet</li>
+      <li>Analyzing Income Statement Line Items</li>
+      <li>Cash Flow from Operating Activities</li>
+      <li>Indirect vs. Direct Method for Cash Flows</li>
+      <li>Common-Size Financial Statements</li>
+    </ol>
+
+    <h3>Section 5: Managerial and Cost Accounting</h3>
+    <p>Internal tools for decision-making.</p>
+    <ol>
+      <li>Role of Managerial Accounting</li>
+      <li>Cost Behavior: Fixed, Variable, and Mixed</li>
+      <li>Break-Even Analysis</li>
+      <li>Contribution Margin and Margin of Safety</li>
+      <li>Job Order Costing</li>
+      <li>Process Costing</li>
+      <li>Activity-Based Costing (ABC)</li>
+      <li>Budgeting: Master Budget Overview</li>
+      <li>Flexible Budgets vs. Static Budgets</li>
+      <li>Variance Analysis: Material and Labor</li>
+      <li>Standard Costing Systems</li>
+      <li>Relevant Costs for Decision-Making</li>
+    </ol>
+
+    <h3>Section 6: Financial Analysis and Ratios</h3>
+    <p>How to interpret numbers for insights.</p>
+    <ol>
+      <li>Liquidity Ratios: Current and Quick</li>
+      <li>Solvency Ratios: Debt-to-Equity</li>
+      <li>Profitability Ratios: ROA and ROE</li>
+      <li>Efficiency Ratios: Inventory Turnover</li>
+      <li>DuPont Analysis</li>
+      <li>Trend Analysis and Horizontal Review</li>
+      <li>Vertical Analysis and Common Sizing</li>
+      <li>Benchmarking Against Industry Averages</li>
+      <li>Limitations of Ratio Analysis</li>
+    </ol>
+
+    <h3>Section 7: Corporate Finance</h3>
+    <p>Funding and growth strategies for businesses.</p>
+    <ol>
+      <li>Capital Structure: Debt vs. Equity</li>
+      <li>Cost of Capital: WACC Calculation</li>
+      <li>Dividend Policy and Theories</li>
+      <li>Stock Repurchases and Signaling</li>
+      <li>Mergers and Acquisitions Basics</li>
+      <li>Valuation Methods: DCF Overview</li>
+      <li>Capital Budgeting: NPV and IRR</li>
+      <li>Payback Period and Profitability Index</li>
+      <li>Lease vs. Buy Decisions</li>
+      <li>Working Capital Management</li>
+    </ol>
+
+    <h3>Section 8: Investments and Securities</h3>
+    <p>From stocks to advanced instruments.</p>
+    <ol>
+      <li>What is a Stock? (Equity Ownership)</li>
+      <li>Bonds: Debt Securities Explained</li>
+      <li>Mutual Funds: Pooled Investments</li>
+      <li>Exchange-Traded Funds (ETFs)</li>
+      <li>What is a Derivative? (Futures, Options, Swaps)</li>
+      <li>Options Trading Basics: Calls and Puts</li>
+      <li>Futures Contracts and Hedging</li>
+      <li>Swaps: Interest Rate and Currency</li>
+      <li>Initial Public Offerings (IPOs)</li>
+      <li>Secondary Markets and Stock Exchanges</li>
+      <li>Portfolio Diversification Principles</li>
+      <li>Efficient Market Hypothesis</li>
+    </ol>
+
+    <h3>Section 9: Risk Management and Derivatives</h3>
+    <p>Protecting against uncertainties.</p>
+    <ol>
+      <li>Types of Financial Risk: Market, Credit, Operational</li>
+      <li>Value at Risk (VaR) Basics</li>
+      <li>Hedging Strategies with Derivatives</li>
+      <li>Credit Default Swaps (CDS)</li>
+      <li>Insurance in Finance</li>
+      <li>Stress Testing and Scenario Analysis</li>
+      <li>Beta and Systematic Risk</li>
+      <li>Risk-Adjusted Returns: Sharpe Ratio</li>
+    </ol>
+
+    <h3>Section 10: Taxation and Regulatory Compliance</h3>
+    <p>Navigating taxes and laws.</p>
+    <ol>
+      <li>What is Taxable Income?</li>
+      <li>Corporate Tax Rates and Deductions</li>
+      <li>Personal Income Tax Brackets</li>
+      <li>Sales Tax and VAT</li>
+      <li>Transfer Pricing in Multinationals</li>
+      <li>Tax Credits vs. Deductions</li>
+      <li>Deferred Tax Assets and Liabilities</li>
+      <li>International Tax Treaties</li>
+      <li>Anti-Money Laundering (AML) Basics</li>
+    </ol>
+
+    <h3>Section 11: Auditing and Assurance</h3>
+    <p>Ensuring accuracy and trust.</p>
+    <ol>
+      <li>Internal vs. External Auditing</li>
+      <li>Audit Planning and Risk Assessment</li>
+      <li>Substantive Testing Procedures</li>
+      <li>Audit Opinions and Qualifications</li>
+      <li>Fraud Detection in Audits</li>
+      <li>SOX Compliance Overview</li>
+      <li>Forensic Accounting Basics</li>
+    </ol>
+
+    <h3>Section 12: Advanced and Specialized Topics</h3>
+    <p>Emerging and niche areas.</p>
+    <ol>
+      <li>International Finance: Forex Markets</li>
+      <li>Behavioral Finance: Biases and Irrationality</li>
+      <li>Sustainable Finance and ESG Investing</li>
+      <li>FinTech: Blockchain and Crypto Basics</li>
+      <li>Personal Finance: Budgeting from Scratch</li>
+      <li>Retirement Planning: 401(k) and IRAs</li>
+      <li>Estate Planning and Wealth Transfer</li>
+      <li>Ethics in Finance: Conflicts of Interest</li>
+    </ol>
+
+  </aside>
+
+  <main class="content">
+
+    <div class="breadcrumb">
+      <span>Section 1: Foundations of Finance and Accounting</span> › Chapter 3
+    </div>
+
+    <div class="chapter">
+      <h1>Chapter 03</h1>
+      <h2>What is Asset and Liability?<br>(Concept, Type & Relationship)</h2>
+    </div>
+
+    <p>
+      Assets and Liability tend to play a very vital role in any business to ensure the profitability of a business. Assets are something that the company owns and liability is something that company owes. Differences between asset and liability are determined by the equity. If the amount or the number of assets are greater the liability the health of the business is good or if the condition is opposite the company faces some major issues that eventually take them to great loss.
+    </p>
+
+    <h3>Concept</h3>
+
+    <h4>Assets</h4>
+    <p>
+      The term assets indicate various forms of resource that helps the business grow over time. It has a different meaning, concept based on the various needs of the business. In finance the assets are resources that have financial value that is important for a business.
+    </p>
+    <div class="formula">
+      Total Assets = Liabilities (Accounts Payable) + Owner's Equity
+    </div>
+
+    <h4>Liability</h4>
+    <p>
+      The term liability is something that a business or an individual owes to another business or a person. In financial terms it's a debt that business owes to other businesses or organizations.
+    </p>
+    <div class="formula">
+      Total Liabilities = Assets (Accounts Receivable) - Owner's Equity
+    </div>
+
+    <h3>Types</h3>
+    <p>
+      The following offers a detailed explanation of the different types of assets and liabilities.
+    </p>
+
+    <h4>Type of assets</h4>
+    <p>Most assets are classified based on 3 broad categories, namely -</p>
+    <table>
+      <tr><td>Convertibility</td><td>Depending on their extent of convertibility, they are further divided into fixed assets or current assets.</td></tr>
+      <tr><td>Physical existence</td><td>Comprise assets that are both tangible and intangible.</td></tr>
+      <tr><td>Purpose</td><td>Depending on their purpose of use, they are categorised as operating and non-operating assets.</td></tr>
+    </table>
+    <p>Following are the 6 different types of assets-</p>
+    <ul>
+      <li><b>Current Assets or Short-term Assets</b><p>Current assets are the types of assets that can be readily converted into cash or its equivalent resources typically within a year and are known as liquid assets. For example, cash equivalents, stock, marketable securities and short-term deposits are some of the most common current assets.</p></li>
+      <li><b>Fixed Assets or Long-term Assets</b><p>Also known as hard assets and fixed assets, these resources are not easy to convert into cash or its equivalent kind. Generally, land, machinery, equipment, building, patents, trademarks, etc. are considered as fixed assets.</p></li>
+      <li><b>Tangible Assets</b><p>Assets with a physical existence are categorised as tangible assets. Resources like stock, land, building, office supplies, equipment, machinery and marketable securities, among others are functioning examples of tangible assets.</p></li>
+      <li><b>Intangible Assets</b><p>On the contrary, assets which do not possess a physical existence come under the category of intangible assets. The best examples of such assets would be market goodwill, corporate intellectual property, patents, copyrights, permits, trade secrets, brand, etc.</p></li>
+      <li><b>Operating Assets</b><p>Assets like cash, building, machinery, equipment, copyright, goodwill, stock, etc. are termed as operating assets. Typically, such assets are used to generate revenue and to maintain daily operation.</p></li>
+      <li><b>Non-Operating Assets</b><p>Though these assets are not used for performing daily operations, they tend to help generate significant revenue. Some of the best examples of non-operating assets are short-term investments, vacant land, income generated through fixed deposits, etc.</p></li>
+    </ul>
+
+    <h4>Type of Liability</h4>
+    <p>Liabilities can be divided into 2 broad categories of internal and external liability -</p>
+    <table>
+      <tr><td>Internal Liability</td><td>Comprises obligations like capital, accumulated profits and salaries, among others.</td></tr>
+      <tr><td>External Liability</td><td>Includes payables like taxes, overdrafts, creditors and borrowings.</td></tr>
+    </table>
+    <p>Liabilities are divided into further more category those are -</p>
+    <ol>
+      <li><b>Current Liabilities (The "Short-Term" Bills)</b><p>These are debts the company must pay off within one year.</p><ul><li><b>Why they matter:</b> They are like your monthly utility bills or grocery credit. If a company can't pay these, it might go out of business quickly.</li><li><b>The "Health Check":</b> Investors subtract these from what the company owns (Current Assets) to see if the business has enough "Working Capital" to keep running day-to-day.</li><li><b>Common Examples:</b><ul class="sub"><li><b>Trade Payables:</b> Money owed to suppliers for materials.</li><li><b>Bank Overdraft:</b> When the bank account goes below zero.</li><li><b>Short-term Loans:</b> Small loans due very soon.</li></ul></li></ul></li>
+      <li><b>Non-Current Liabilities (The "Long-Term" Debt)</b><p>These are debts that the company has more than a year to pay back.</p><ul><li><b>Why they matter:</b> These usually fund big things, like building a new factory or buying expensive machinery. It shows how much the company is "borrowing" versus "owning" to grow.</li><li><b>The "Health Check":</b> Used to see if the company is drowning in debt or if it can safely manage its long-term growth.</li><li><b>Common Examples:</b><ul class="sub"><li><b>Mortgages:</b> Long-term loans for land or buildings.</li><li><b>Bonds/Debentures:</b> Large sums of money borrowed from the public or investors.</li><li><b>Deferred Tax:</b> Tax that will be paid in future years.</li></ul></li></ul></li>
+      <li><b>Contingent Liabilities (The "Maybe" Debts)</b><p>These are "Wait and See" liabilities. They aren't definite debts yet; they depend on a future event.</p><ul><li><b>The Rule:</b> Accountants only write these down if there is at least a 50% chance the company will actually have to pay.</li><li><b>Common Example:</b><ul class="sub"><li><b>Lawsuits:</b> If a company is being sued, they might have to pay $1 million, or they might win and pay $0. Until the judge decides, it's a contingent liability.</li></ul></li></ul></li>
+    </ol>
+
+    <h3>Relationship between Assets and Liability</h3>
+    <p>
+      In business, maintaining a proper balance between assets and liabilities is essential to keep a company profitable. This relationship helps us understand how well a company can handle its internal and external obligations and how easily its assets can be converted into cash. It also helps in measuring the liquidity of a business, which shows its ability to meet short-term financial needs.
+    </p>
+
+    <h4>Financial Ratios</h4>
+    <p>
+      Financial ratios are tools used to understand a company's financial health. They help measure liquidity, debt position, and the owner's share in the business.
+    </p>
+    <h4>1. Current Ratio</h4>
+    <p>The current ratio shows a company's ability to pay its short-term debts using its current assets.</p>
+    <div class="formula">Current Ratio = Current Assets ÷ Current Liabilities</div>
+    <h4>2. Acid-Test Ratio (Quick Ratio)</h4>
+    <p>The acid-test ratio measures how well a company can meet short-term liabilities using quick assets, excluding inventory.</p>
+    <div class="formula">Acid-Test Ratio = (Current Assets – Inventory) ÷ Current Liabilities</div>
+    <h4>3. Cash Ratio</h4>
+    <p>The cash ratio shows a company's ability to pay short-term obligations using only cash and cash equivalents.</p>
+    <div class="formula">Cash Ratio = Cash and Cash Equivalents ÷ Current Liabilities</div>
+    <h4>4. Debt Ratio</h4>
+    <p>The debt ratio indicates how much of a company's total assets are financed through debt.</p>
+    <div class="formula">Debt Ratio = Total Liabilities ÷ Total Assets</div>
+    <h4>5. Owner's Equity</h4>
+    <p>Owner's equity represents the owner's claim on the business after all liabilities are paid.</p>
+    <div class="formula">Owner's Equity = Total Assets – Total Liabilities</div>
+
+  </main>
+
+</div>
+
+</body>
+</html>
